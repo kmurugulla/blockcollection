@@ -131,7 +131,7 @@ async function buildBreadcrumbsFromNavTree(nav, currentUrl) {
   }
 
   const placeholders = await fetchPlaceholders();
-  const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
+  const homePlaceholder = placeholders?.breadcrumbsHomeLabel || 'Home';
 
   crumbs.unshift({ title: homePlaceholder, url: homeUrl });
 
