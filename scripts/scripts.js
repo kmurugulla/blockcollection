@@ -69,11 +69,12 @@ function a11yLinks(main) {
   const links = main.querySelectorAll('a');
   links.forEach((link) => {
     const href = link.getAttribute('href');
-    if (href) {
-      const hash = href.split('|')[1];
-      if (hash) {
-        link.setAttribute('aria-label', hash || link.textContent);
-      }
+    if (href.includes('|')) {
+      const label = href.split('|')[1];
+      link.setAttribute('href', href.split('|')[0]);
+      link.setAttribute('aria-label', href.split('|')[1] );
+    } else {
+      link.setAttribute('aria-label', link.textContent);
     }
   });
 }
