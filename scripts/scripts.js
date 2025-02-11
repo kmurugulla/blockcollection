@@ -68,7 +68,13 @@ function buildAutoBlocks(main) {
 function a11yLinks(main) {
   const links = main.querySelectorAll('a');
   links.forEach((link) => {
-    link.setAttribute('aria-label', link.textContent);
+    const href = link.getAttribute('href');
+    if (href) {
+      const hash = href.split('|')[1];
+      if (hash) {
+        link.setAttribute('aria-label', hash || link.textContent);
+      }
+    }
   });
 }
 
