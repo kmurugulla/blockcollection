@@ -65,6 +65,13 @@ function buildAutoBlocks(main) {
   }
 }
 
+function a11yLinks(main) {
+  const links = main.querySelectorAll('a');
+  links.forEach((link) => {
+    link.setAttribute('aria-label', link.textContent);
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -77,6 +84,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  a11yLinks(main);
 }
 
 /**
