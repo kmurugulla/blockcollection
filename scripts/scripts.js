@@ -68,14 +68,13 @@ function buildAutoBlocks(main) {
 function a11yLinks(main) {
   const links = main.querySelectorAll('a');
   links.forEach((link) => {
-    const href = link.getAttribute('href') ? decodeURIComponent(link.getAttribute('href')) : '';
-    if (href.includes('|')) {
-      const label = href.split('|')[1];
-      link.setAttribute('href', href.split('|')[0]);
-      link.setAttribute('aria-label', label.trim());
-    } else {
-      link.setAttribute('aria-label', link.textContent);
+    let label = link.textContent;
+    if (link.querySelector(':scope > span[class*="icon"]')) {
+      const icon = link.querySelector(':scope > span[class*="icon"]');
+      label = icon.classList[1].split('-')[1];
+      console.log(label);
     }
+    link.setAttribute('aria-label', label);
   });
 }
 
