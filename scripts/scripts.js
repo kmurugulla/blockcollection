@@ -68,11 +68,11 @@ function buildAutoBlocks(main) {
 function a11yLinks(main) {
   const links = main.querySelectorAll('a');
   links.forEach((link) => {
-    const href = link.getAttribute('href');
+    const href = link.getAttribute('href') ? decodeURIComponent(link.getAttribute('href')) : '';
     if (href.includes('|')) {
       const label = href.split('|')[1];
       link.setAttribute('href', href.split('|')[0]);
-      link.setAttribute('aria-label', href.split('|')[1] );
+      link.setAttribute('aria-label', label.trim());
     } else {
       link.setAttribute('aria-label', link.textContent);
     }
