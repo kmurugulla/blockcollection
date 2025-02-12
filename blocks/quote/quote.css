@@ -10,9 +10,9 @@
   }
 }
 
-/*.quote blockquote .quote-quotation {
+.quote blockquote .quote-quotation {
   font-size: 120%;
-}*/
+}
 
 .quote blockquote .quote-quotation > :first-child {
   text-indent: -0.5ch;
